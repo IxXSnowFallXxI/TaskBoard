@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>TaskBoard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            display: flex;
+        }
+
+        /* Боковое меню */
+        .sidebar {
+            width: 220px;
+            background-color: #1e1e2f;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .menu-item {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .menu-item:hover {
+            background-color: #2f2f4f;
+        }
+
+        /* Контент справа от меню */
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #f7f7f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Меню</h2>
+        <a href="#" class="menu-item">📋 Доска задач</a>
+        <a href="#" class="menu-item">💬 Чат</a>
+        <a href="{% url 'games_page' %}" class="menu-item">🎮 Мини-игры</a>
+        <a href="{% url 'blog_page' %}" class="menu-item">📖 Блог</a>
+    </div>
+
+    <div class="content">
+        {% block content %}
+        <h1>Добро пожаловать в TaskBoard</h1>
+        <p>Выбери раздел в меню слева.</p>
+        {% endblock %}
+    </div>
+</body>
+</html>
+
