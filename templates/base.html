@@ -47,9 +47,33 @@
             padding: 20px;
             background-color: #f7f7f9;
         }
+
+        /* Верхние кнопки авторизации */
+        .auth-buttons {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .auth-buttons a {
+            padding: 8px 14px;
+            background: #2f2f4f;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .auth-buttons a:hover {
+            background-color: #444;
+        }
     </style>
 </head>
 <body>
+    <!-- Боковое меню -->
     <div class="sidebar">
         <h2>Меню</h2>
         <a href="#" class="menu-item">📋 Доска задач</a>
@@ -58,6 +82,17 @@
         <a href="{% url 'blog_page' %}" class="menu-item">📖 Блог</a>
     </div>
 
+    <!-- Верхние кнопки -->
+    <div class="auth-buttons">
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">🚪 Выйти</a>
+        {% else %}
+            <a href="{% url 'login' %}">🔑 Войти</a>
+            <a href="{% url 'register' %}">➕ Регистрация</a>
+        {% endif %}
+    </div>
+
+    <!-- Основной контент -->
     <div class="content">
         {% block content %}
         <h1>Добро пожаловать в TaskBoard</h1>
@@ -66,4 +101,3 @@
     </div>
 </body>
 </html>
-
