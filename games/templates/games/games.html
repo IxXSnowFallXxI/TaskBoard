@@ -1,6 +1,11 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-<h1>Мини-игры</h1>
-<p>Здесь будут игры</p>
+<h1>Выберите игру</h1>
+<ul>
+    <li><a href="{% url 'game1_page' %}">Игра 1</a></li>
+    <li><a href="{% url 'game2_page' %}">Игра 2</a></li>
+    <li><a href="{% url 'game3_page' %}">Игра 3</a></li>
+</ul>
 {% endblock %}

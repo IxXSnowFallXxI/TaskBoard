@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- Подключаем CSS через Django static -->
+<link rel="stylesheet" href="{% static 'games/game1/game1.css' %}">
+
+<div class="game-container">
+    <div class="stats">
+        <div class="stat-box">
+            <span class="stat-label">Целей:</span>
+            <span id="score" class="stat-value">0</span>
+        </div>
+        <div class="stat-box">
+            <span class="stat-label">Время:</span>
+            <span id="timer" class="stat-value">30</span>
+        </div>
+        <div class="stat-box">
+            <span class="stat-label">Точность:</span>
+            <span id="accuracy" class="stat-value">100%</span>
+        </div>
+    </div>
+    
+    <!-- Canvas для Phaser -->
+    <div id="game-canvas"></div>
+    
+    <div class="controls">
+        <button id="start-btn" class="btn">Старт</button>
+        <button id="reset-btn" class="btn">Сброс</button>
+        <div class="difficulty">
+            <label>Сложность:</label>
+            <select id="difficulty">
+                <option value="easy">Легкая</option>
+                <option value="medium" selected>Средняя</option>
+                <option value="hard">Сложная</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="instructions">
+        <p>🎯 Наводи прицел на серые цели и кликай</p>
+        <p>⏱️ У тебя 30 секунд</p>
+        <p>📊 Старайся быть быстрым и точным</p>
+    </div>
+</div>
+
+<!-- Подключаем Phaser -->
+<script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
+
+<!-- Подключаем НАШУ игру -->
+<script src="{% static 'games/game1/game1.js' %}"></script>
+
+<!-- Передаем static URL в JavaScript -->
+<script>
+    window.STATIC_URL = "{% static '' %}";
+    console.log("Static URL loaded:", window.STATIC_URL);
+</script>
+
+{% endblock %}

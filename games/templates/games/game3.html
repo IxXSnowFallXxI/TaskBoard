@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h1>Игра 3</h1>
+
+<!-- Контейнер мини-окна для игры -->
+<div id="game_container" style="width: 95%; height: 80vh; border: 2px solid #333;"></div>
+
+<!-- Подключаем Phaser -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.55.2/phaser.min.js"></script>
+
+<!-- Подключаем JS игры -->
+<script src="{% static 'games/game3/game.js' %}"></script>
+{% endblock %}
